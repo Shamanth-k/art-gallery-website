@@ -1,0 +1,136 @@
+/* frontend/src/styles/navbar.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fixed navbar at the top */
+  top: 0; /* Align to top */
+  left: 0;
+  width: 97%;
+  background-color: transparent; /* Fully transparent navbar */
+  padding: 10px 40px; /* Added more padding to the left and right */
+  z-index: 1000; /* Keep navbar above other elements */
+}
+
+.navbar .logo {
+  color: rgb(0, 0, 0); /* Black text for logo */
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none; /* Remove bullets */
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  color: rgb(0, 0, 0); /* Black text for links */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative; /* Set relative for pseudo-element positioning */
+}
+
+.nav-links a::after {
+  content: ""; /* Empty content for pseudo-element */
+  position: absolute;
+  bottom: -3px; /* Position underline slightly below the text */
+  left: 0;
+  width: 100%;
+  height: 2px; /* Height of the underline */
+  background-color: #000; /* Underline color */
+  transform: scaleX(0); /* Initially hide the underline */
+  transform-origin: right; /* Start the animation from the right */
+  transition: transform 0.3s ease-in-out; /* Smooth reveal animation */
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1); /* Fully reveal the underline on hover */
+  transform-origin: left; /* Reveal from left to right */
+}
+
+.nav-links a:hover {
+  color: #555; /* Optional: Change text color slightly on hover */
+}
+
+.profile-photo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: 10px; /* Add some space between the profile photo and other links */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  list-style: none;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.dropdown-menu li {
+  margin: 10px 0;
+}
+
+.dropdown-menu a,
+.dropdown-menu button {
+  color: rgb(0, 0, 0); /* Black text for links */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu button:hover {
+  color: #555; /* Optional: Change text color slightly on hover */
+}
+
+/* Content styles */
+.content {
+  padding: 150px 40px 20px; /* Add more padding on the left and right */
+}
+
+/* Responsive Navbar for Smaller Screens */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center;
+  }
+
+  .nav-links li {
+    margin: 10px 0; /* Spacing between items */
+  }
+
+  .content {
+    padding: 120px 40px 20px; /* Adjust padding for smaller screens */
+  }
+}
